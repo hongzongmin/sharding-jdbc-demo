@@ -4,6 +4,8 @@ import com.example.demo.entity.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Mapper
 public interface UserInfoMapper {
     /**
@@ -45,4 +47,6 @@ public interface UserInfoMapper {
      * @mbg.generated Tue Mar 13 23:47:19 CST 2018
      */
     int updateByPrimaryKey(UserInfo record);
+
+    List<UserInfo> getUserList();
 }

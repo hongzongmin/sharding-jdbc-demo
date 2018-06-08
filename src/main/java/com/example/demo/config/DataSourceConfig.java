@@ -153,9 +153,10 @@ public class DataSourceConfig {
         shardingRuleConfig.getTableRuleConfigs().add(getUserTableRuleConfiguration());
 //        shardingRuleConfig.getTableRuleConfigs().add(getOrderItemTableRuleConfiguration());
         shardingRuleConfig.getBindingTableGroups().add("user_info");
+        //配置分库规则
         shardingRuleConfig.setDefaultDatabaseShardingStrategyConfig(new StandardShardingStrategyConfiguration("user_id", DemoDatabaseShardingAlgorithm.class.getName()));
+        //配置分表规则
         shardingRuleConfig.setDefaultTableShardingStrategyConfig(new StandardShardingStrategyConfiguration("user_id", DemoTableShardingAlgorithm.class.getName()));
-//        shardingRuleConfig.setDefaultTableShardingStrategyConfig(new StandardShardingStrategyConfiguration("order_id", DemoTableShardingAlgorithm.class.getName()));
         return new ShardingDataSource(shardingRuleConfig.build(createDataSourceMap()));
 //        return ShardingDataSourceFactory.createDataSource(createDataSourceMap(), shardingRuleConfig);
     }
@@ -204,7 +205,7 @@ public class DataSourceConfig {
 
     private Map<String, DataSource> createDataSourceMap() {
         Map<String, DataSource> result = new HashMap<>();
-        result.put("user_0", createDataSource("user"));
+        result.put("user_0", createDataSource("user_0"));
         result.put("user_1", createDataSource("user_1"));
         return result;
     }
@@ -213,8 +214,9 @@ public class DataSourceConfig {
         BasicDataSource result = new BasicDataSource();
         result.setDriverClassName(com.mysql.jdbc.Driver.class.getName());
         result.setUrl(String.format("jdbc:mysql://localhost:3306/%s", dataSourceName));
-        result.setUsername("root");
-        result.setPassword("123456");
+        result.setUsername("aihuishou");
+        result.setPassword("aihuishou" +
+                "");
         return result;
     }
 

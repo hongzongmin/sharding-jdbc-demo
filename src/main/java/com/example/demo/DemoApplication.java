@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @EnableTransactionManagement(proxyTargetClass = true)
+@MapperScan(basePackages = "com.example.demo.mapper")
 public class DemoApplication {
 
 	public static void main(String[] args) {

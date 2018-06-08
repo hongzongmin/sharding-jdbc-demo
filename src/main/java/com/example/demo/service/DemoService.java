@@ -9,6 +9,7 @@ import io.shardingjdbc.core.hint.HintManagerHolder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -19,7 +20,7 @@ public class DemoService {
 
     public static Long userId = 150L;
 
-    public void demo() {
+    public void addUser() {
         System.out.println("Insert--------------");
 
         for (int i = 1; i <= 10; i++) {
@@ -44,5 +45,9 @@ public class DemoService {
 
         }
         System.out.println("over..........");
+    }
+
+    public List<UserInfo> getUser(){
+       return userInfoMapper.getUserList();
     }
 }
